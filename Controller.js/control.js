@@ -37,7 +37,7 @@ exports.deleteData=async(req,res)=>{
    const{id}=req.params
    console.log(id);
   try{ 
-   const deletedata =projects.findByIdAndDelete(id)
+   const deletedata = await projects.findByIdAndDelete(id)
 console.log("hem");
    res.status(200).json(deletedata)
   }catch(err){
@@ -52,7 +52,7 @@ exports.editUser =async(req,res)=>{
    const userId =req.payload
    const { name, caloriesPerServing, cookTimeMinutes, cuisine, prepTimeMinutes } = req.body;
 try{
- const updateUser =await projects.findByIdAndUpdate({_id:userId},{
+ const updateUser = await projects.findByIdAndUpdate({_id:userId},{
    name,caloriesPerServing,caloriesPerServing,cookTimeMinutes,cuisine,prepTimeMinutes
  })
  await updateUser.save()
